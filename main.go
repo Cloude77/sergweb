@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	//"github.com/julienschmidt/httprouter"
 )
 
 // function call answer request user
@@ -23,7 +24,17 @@ func handlerFunc(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprint(w, "To get in touch, please send an email to <a href=\"mailto:support@lenslocked.com\">support@lenslocked.com</a>.")
 }
 
+// func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+// 	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
+// }
+
 func main() {
+	//mux := &http.ServeMux{}
+	//mux.HandleFunc("/", handlerFunc)
+	//r := mux.NewRouter()
 	http.HandleFunc("/", handlerFunc)
 	http.ListenAndServe(":3000", nil)
+	//router := httprouter.New()
+	//router.GET("/hello/:name", Hello)
+
 }
